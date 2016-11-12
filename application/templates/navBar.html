@@ -1,0 +1,10 @@
+<!-- This is the navigation bar that is found at the top of each user page -->
+<div class="container">
+<ul class="nav nav-tabs">
+<div class="col-md-12"><br><br></div>
+	<!--If the user that logged in is an employer, display the employer navbar-->
+	{% for menuItem in config['employerMenu'] %}
+    <li><a class="nav-tabs" href="{{menuItem['link']}}">{{menuItem['title']}}</a></li>
+    {% endfor %}
+</ul>
+</div>

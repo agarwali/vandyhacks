@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>Access Denied</h2>
+<p>You are not authorized to access this data.</p>
+<p>You are either not in the system, or the token time limit has passed</p>
+<p>You can try to log-in again <a href="{{config.application.url}}">here</a></p>
+<p>Please contact system support.</p>
+{% endblock %}

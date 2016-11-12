@@ -1,117 +1,57 @@
-[TOC]
-#Installation#
-## Requirements ##
-* python 2.7
-* linux, unix, mac, windows(with attachments)
-* git 
+# About This Application
 
-## Creating Development Environment ##
+You should, at this point, modify this file to include the information we need
+about this application. Among other things, it might be good to have
+some authorship information, who the client is, contact information...
+who knows.
 
-1. **Fork** the reposistory from BitBucket and rename to your project.
+# Relevant Documentation
 
-2. If working on a **local machine**, then clone the repo from your terminal
+To work on this application, you'll probably want:
 
-``` bash
-git clone https://username@bitbucket.org/username/repositoryname.git
-source setup.sh
-python app.py
-```
-You can now check your localhost to see if it deployed correctly.
+* The Flask Documentation
 
-3. If working on a **cloud9** account follow instructions below to create a new workspace
-    1. Input your project name and description
-    2. Get the git URL of your forked repository from BitBucket
-    3. You should get the SSH URL, it should look something like: git@bitbucket.org:username/repositoryname.git
-    4. Now paste the git URL into "Clone from Git URL" field in cloud9
+  http://flask.pocoo.org/
 
-3b. Next, you will need to set up your Linux environment for Python development. You only need to do this once.
+* The Jinja Documentation
 
-```bash
-sudo apt-get install python-virtualenv python-dev python-yaml
-```
+  http://jinja.pocoo.org/docs/dev/
 
-3c. Whenever you start a new session, you'll need to "source" the setup.sh file, which gets your Terminal ready for Flask development and testing. You do this by "sourcing" it. After your source the setup script, you can then run your application.
+* The PeeWee Documentation
 
-``` bash
-source setup.sh
-python app.py
-``` 
-If you are succesful you will see something like:
-``` bash
-Starting application
-Running server at http://0.0.0.0:8080/
-```
-Click the link in your terminal to check if it deployed correctly.
+  http://docs.peewee-orm.com/en/latest/index.html
 
-# Working with the flask template #
-## File Hierarchy ##
-```
-- Project Name
-   - App
-      -static
-      -templates
-        -start.html
-      - __init__.py
-      - allImports.py
-      - config.yaml
-      - models.py
-      - start.py # this an example of a python file that renders a page
-   - Data
-       - db.sqlite
-   - Venv
-   - app.py
-   - create_db.py
-   - setup.sh
-```
-Above you will find the file structure for the flask template. You will be mostly working with the app/ directory.
-Some **important** files and directories.
+* The Configure Documentation
 
-* models.py - This file contains the database schema or the tables and columns that will be in database.
-If you want to make a new table then you will add a class to this file, see the example in the models.py file.
-Once you are done making changes to this file run create_db.py to make the changes in the database.
+  http://configure.readthedocs.io/en/latest/#
 
-* App/ directory - This directory will contain a python module. In order for python files to be recognized they must be added to the \_\_init\_\_.py file in this directory.
+That's most of what comes to mind...
 
-* start.py - This file is a very quick example of a python file that will render a page. This file processes and renders the start.html file located under templates.
+# How To Add Passwordless Login
 
-## Example for creating a new view ##
-If I wanted to create a new webpage then I would do the following.
+The passwordless login system is a derivation of the one developed by Matt Jadud
 
-* Create your python file inside of the app/ directory. Here you will include the decorator @app.route as seen in other files
-```python
-        from allImports import *
-        @app.route("/example", methods = ["GET"])
-        def example():
-            return render_template("example.html", cfg = cfg)
-```
-* Create HTML file inside of the templates folder and make sure to give it the **same name** as the one you used in the python file.
-```HTML
-{% extends "base.html" %}
+* Matt's Login System 
+  https://bitbucket.org/jadudm/berea-handin-0730/src/a5c7ba3b9e58b74f641cde44f9d659a4369ca02c/application/controllers/login/?at=master
 
-{% block body %}
+## Step One
 
-<h1> Header 1 </h1>
-<p> Example Paragraph </p>
+Create a login directory under controllers
 
-{% endblock %}
-```
-* Import the python file you created inside the \_\_init\_\_.py file.
-```Python
-from app import example.py
-```
+## Step Two 
 
-## Reading and Writing to the database ##
+Copy the two files found in Matt's login folder to your file
 
-In order to read from a database you will need to make a query to get the data. You can find out more about queries at [the peewee site](http://docs.peewee-orm.com/en/latest/peewee/querying.html)
-one quick example of a query would be the following:
-```python
-query = tableName.get( condition = something )
-```
-This will return a python object that will have the data as attributes. You can pass this object to the html file. You can access this data by typing query.Column. 
+## Step Three
+You need to add to your setup.sh the mail version, Look at Matt's copy
 
-## Documentation links ##
+## Step Four 
+mkdir application/templates/views/login
 
-* [Jinja Documentation](http://jinja.pocoo.org/)
-* [Peewee Documentation](http://docs.peewee-orm.com/en/latest/)
-* [Git documentation](https://git-scm.com/documentation)
-* [Flask Documentation](http://flask.pocoo.org/docs/0.10/)
+then copy in the the 3 html files from Matt's directory
+
+## Step Five
+
+Add the functions to your validation.py, but make sure to make it equal your database.
+
+

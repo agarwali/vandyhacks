@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <h1> Welcome to our app</h1>
+    <form method="POST">
+    <div class="col-lg-12">
+        <h4> Personal information </h4>
+        <label> First Name: </label> <input class = "form-control" type='text' name="first_name">
+        <label> Middle Initial: </label> <input class = "form-control" type='text' name="middle_initial">
+        <label> Last Name: </label> <input class = "form-control" type='text' name="last_name">
+    </div>
+    <div class="col-lg-12">
+        <h4> Address:  <br>
+        <sub><i> In order to get the correct ballot, we need to know your address.</i></sub></h4>
+        <div class="col-lg-6">
+            <label>  Address 1: </label>
+            <input type  = "text" 
+                   class = "form-control" 
+                   name = "address1"
+                   required />
+          </div>
+          <div class="col-lg-6">
+              <label>  Address 2: </label>
+              <input type  = "text" 
+                     class = "form-control " 
+                     name = "address2"
+                     required />
+          </div>
+          <div>
+            <div class="col-lg-2">
+                <br/>
+                <label> City: </label>
+                <input type  = "text"
+                       class = "form-control" 
+                       name = "city"
+                       required
+                        />
+            </div>
+            
+            <div class="col-lg-2 " >
+                <br/>
+                <label> State: </label>
+                <input type  = "text"
+                       class = "form-control" 
+                       name = "state"
+                       required
+                        />
+            </div>
+            <div class="col-lg-2">
+                <br/>
+                <label> Zip Code: </label>
+                <input type  = "text" 
+                       class = "form-control" 
+                       name = "zip_code"
+                       required
+                        />
+            </div>
+          </div>
+    </div>
+    <div class="pull-right">
+    <button type="submit" name="button" value="save" class="btn btn-default" formnovalidate> Save </button>
+    </div>
+    </form>
+</div>
+{% endblock %}

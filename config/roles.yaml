@@ -1,0 +1,27 @@
+# Only certain people can be admins in this app
+admin:
+  - ubuntu
+  - heggens
+  - jadudm
+  - database Roles
+employer:
+  - ubuntu
+  
+students:
+  - group admin
+  - AD students
+
+faculty:
+  - group admin
+  - AD faculty
+
+withsuperpowers:
+  - hunterr
+
+valid:
+  - group admin
+  - group students
+  - group faculty
+
+anon:
+  - ANY

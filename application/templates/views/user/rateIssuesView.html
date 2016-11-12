@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="container">
+    <h1> Welcome to our app</h1>
+    <form method="POST"> 
+    <h3> Please choose all issues that are of importance to you:</h3>
+    <select class="selectpicker form-control" title="-- Select all that is important to you --" multiple name="issueChoices">
+     
+        {% for issue in config['issuesList'] %}
+            
+            <option value="{{issue['option']}}"
+            {% if x %}
+                {% if issue in issues %}
+                      selected
+                {% endif %}
+            {% endif %}
+            
+            >
+                   <strong> {{issue['option']}}: </strong>
+                    <sub>{{issue['explanation']}}</sub>
+            </option>
+        {% endfor %}
+    </select>
+    <div class="pull-right">
+    {% if x %}
+        {% for issue in il %}
+            <label> {{issue}}: </label>
+            <input  data-provide="slider" id="ex9" type="text"/>
+        {% endfor %}
+    {% endif %}
+    <br>
+    <button type="submit" name="button" value="save" class="btn btn-default"> Save </button>
+    </div>
+    </form>
+</div> 
+{% endblock %}

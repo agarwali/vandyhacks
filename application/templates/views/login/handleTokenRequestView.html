@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block body %}
+<style>
+.centered {
+    width: 600px;
+    height: 200px;
+
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    margin: auto;
+}
+</style>
+
+<div class = "row centered">
+  <div class="alert alert-success text-center" role="alert">
+  <p>An email has been sent to you with a login link.</p>
+
+  <p>That link is valid for {{config.application.tokenTimeout}} minutes.</p>
+  </div>
+
+  <div>
+    {% if flags.local %}
+    <p>Upload Assignments: <a href = "{{urls.upload}}">{{urls.upload}}</a></p>
+    <p>Download Your Assignments: <a href = "{{urls.download}}">{{urls.download}}</a></p>
+    <p>Download Resource: <a href = "{{urls.resourcedown}}">{{urls.resourcedown}}</a></p>
+
+    {% if flags.faculty or flags.admin or flags.TA %}
+    <p>Add Resource: <a href = "{{urls.resourceup}}">{{urls.resourceup}}</a></p>
+    <p>Download for a course: <a href = "{{urls.downloadcourse}}">{{urls.downloadcourse}}</a></p>
+
+    {% if flags.faculty or flags.admin %}
+    <p>Admin: <a href = "{{urls.admin}}">Admin Interface</a></p>
+    <p>Token: {{session['token']}}</p>
+    {% endif %}
+    {% endif %}
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

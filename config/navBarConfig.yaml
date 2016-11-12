@@ -1,0 +1,6 @@
+# This implements the navigation bar
+employerMenu:
+  - title: "Internships"
+    link: "/employer/viewInternship"
+  - title: "Post New Internship"
+    link: "/employer/postInternship"

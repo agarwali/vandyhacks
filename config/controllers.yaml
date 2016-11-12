@@ -1,0 +1,26 @@
+layout:
+  - directory:
+    name: employer
+    controllers:
+      - name: postInternship
+        handlers:
+          # Comments
+          - purpose: "Lets an employer post an internship."
+            route: "/employer/postInternship"
+            methods:
+              - GET
+              - POST
+            function: postInternship
+            roles:
+              - employer
+      - name: viewInternship
+        handlers:
+          # Comments
+          - purpose: "Lets an employer view their posted internships."
+            route: "/employer/viewInternship"
+            methods:
+              - GET
+              - POST
+            function: viewInternship
+            roles:
+              - employer

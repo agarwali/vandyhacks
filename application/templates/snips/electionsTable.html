@@ -1,0 +1,54 @@
+
+<div class="table-responsive col-xs-12">
+    <table class="table" 
+           id="electionsTable">
+    
+    <thead class= "thead">
+      <tr>
+         {% for entry in config["table_entry"] %}
+          <th style = "border: 1px 
+                               solid 
+                               black;
+                       border-radius: 5px "> {{entry["header"]}} 
+          </th>
+        {% endfor %}
+      </tr>
+    </thead>
+    
+    <tbody>
+      {% for internship in internships %}
+          {% if internship.is_deleted == False %}
+        <tr>
+          <td>
+            <a href="/employer/open/{{internship.IID}}/">{{internship.title}}</a>
+          </td>
+          <td style="width: 50%;
+                     max-width: 300px;  
+                     white-space: nowrap;
+                     overflow: hidden;">
+              {{internship.description}}</td>
+          <td style="width: 15%;
+                     max-width: 25px;  
+                     white-space: nowrap;
+                     overflow: hidden;">{{internship.location}}</td>
+          <td data-oder = "{{internship.deadline}}"> {{internship.deadline}} </td>
+          <td>
+              {% if internship.status == 0 %}
+              Saved
+              {% elif internship.status == 1 %}
+              Posted
+              {% elif internship.status == 2 %}
+              Approved 
+              {% endif %}
+           </td>
+        </tr>
+        {% endif %}
+      {% endfor %}
+    </tbody>
+    
+  </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() { $('#activityTable').DataTable(); } );
+</script>
