@@ -41,6 +41,8 @@ def rateIssues ():
   elif request.method == "POST":
     data=request.form
     if data['button'] == "save":
+      user=User.get(User.UID==0)
+      print user.first_name
       issuesList = request.form.getlist('issueChoices')
       x=1
       issues=', '.join(issuesList)
@@ -89,6 +91,8 @@ def rateIssues ():
           issue.america=data[key]
         elif key=="Foreign":
           issue.foreignPolicy=data[key]
+          
+      issue.user=0;
       issue.save()
       
       return redirect("user/upcomingElections") 
