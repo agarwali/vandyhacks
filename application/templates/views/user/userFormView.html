@@ -1,17 +1,25 @@
 {% extends "base.html" %}
 {% block body %}
 <div class="container">
-    <h1> Welcome to our app</h1>
+    <h1 class="text-center"><strong> Welcome to our app</strong></h1>
+    <div> {% include "navBar.html" %}<br><br> </div>
     <form method="POST">
     <div class="col-lg-12">
-        <h4> Personal information </h4>
-        <label> First Name: </label> <input class = "form-control" type='text' name="first_name">
-        <label> Middle Initial: </label> <input class = "form-control" type='text' name="middle_initial">
-        <label> Last Name: </label> <input class = "form-control" type='text' name="last_name">
+        <h4> <strong>Personal information</strong> </h4>
+        <div class="col-lg-5">
+        <label> First Name: </label>
+        <input class = "form-control" type='text' name="first_name"></div>
+        <div class="col-lg-2">
+        <label> Middle Initial: </label> <input 
+                   oninput='this.value=this.value.toUpperCase();'
+                   maxlength="1"
+                   size="1" class = "char form-control" type='text' name="middle_initial"></div>
+        <div class="col-lg-5">
+        <label> Last Name: </label> <input class = "form-control" type='text' name="last_name"></div>
     </div>
     <div class="col-lg-12">
-        <h4> Address:  <br>
-        <sub><i> In order to get the correct ballot, we need to know your address.</i></sub></h4>
+        <h4><strong> Address:</strong>  <br>
+        <sub><i> (In order to get the correct ballot, we need to know your address)</i></sub></h4>
         <div class="col-lg-6">
             <label>  Address 1: </label>
             <input type  = "text" 
@@ -40,11 +48,7 @@
             <div class="col-lg-2 " >
                 <br/>
                 <label> State: </label>
-                <input type  = "text"
-                       class = "form-control" 
-                       name = "state"
-                       required
-                        />
+                {% include "snips/statesNames.html" %}
             </div>
             <div class="col-lg-2">
                 <br/>
