@@ -21,9 +21,9 @@
                      max-width: 300px;  
                      white-space: nowrap;
                      overflow: hidden;">
-            <a href="/user/open/{{election.get('EID')}}/">{{election.get('name', "Unavailable")}}</a>
+            <a href="/user/open/{{election.get('id')}}/">{{election.get('name', "Unavailable")}}</a>
           </td>
-          <td data-oder = "{{election.get('date','unknown')}}"> {{election.get('date', "To be determined")}} </td>
+          <td data-oder = "{{election.get('electionDay','unknown')}}"> {{election.get('electionDay', "To be determined")}} </td>
         </tr>
         {% endfor %}
     </tbody>
