@@ -3,7 +3,7 @@
 <ul class="nav nav-tabs">
 <div class="col-md-12"><br><br></div>
 	<!--If the user that logged in is an employer, display the employer navbar-->
-	{% for menuItem in config['employerMenu'] %}
+	{% for menuItem in config['electionsMenu'] %}
     <li><a class="nav-tabs" href="{{menuItem['link']}}">{{menuItem['title']}}</a></li>
     {% endfor %}
 </ul>

@@ -1,6 +1,6 @@
 <div class="table-responsive col-xs-12">
     <table class="table" 
-           id="electionsTable">
+           id="electionTable">
     
     <thead class= "thead">
       <tr>
@@ -15,20 +15,22 @@
     </thead>
     
     <tbody>
+        {% for election in elections %}
         <tr>
           <td style="width: 50%;
                      max-width: 300px;  
                      white-space: nowrap;
                      overflow: hidden;">
-            <a href="/user/open/{{elections.EID}}/">{{elections.name}}</a>
+            <a href="/user/open/{{election.get('EID')}}/">{{election.get('name', "Unavailable")}}</a>
           </td>
-          <td data-oder = "{{elections.date}}"> {{elections.date.__format__("%m/%d/%Y %I:%M %p")}} </td>
+          <td data-oder = "{{election.get('date','unknown')}}"> {{election.get('date', "To be determined")}} </td>
         </tr>
+        {% endfor %}
     </tbody>
     
   </table>
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function() { $('#activityTable').DataTable(); } );
+    $(document).ready(function() { $('#electionTable').DataTable(); } );
 </script>

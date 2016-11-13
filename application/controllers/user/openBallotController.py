@@ -34,11 +34,9 @@ from application.logic.validation import \
 THECOOKIE = 'internshipcatalog'
 
 # PURPOSE: The initial login page/handler.
-@app.route('/user/upcomingElections/', methods = ['GET'])
-def upcomingElections ():
+@app.route('/user/open/<int:EID>', methods = ['GET','POST'])
+def openBallot (EID):
   if request.method == "GET":
-    
-    #TODO: needs to pass elections objects  ----------------
-    elections=[{"EID":"1","name":"First", "date":"12/12/12"},{"EID":"2","name":"Second", "date":"13/13/13"},{"EID":"3","name":"Third", "date":"14/14/14"}]
-    return render_template("views/user/upcomingElectionsView.html", config = config, elections=elections)
-  
+    return render_template("views/user/userFormView.html", config = config)
+  elif request.method == "POST":
+    return redirect("user/rateIssues") 

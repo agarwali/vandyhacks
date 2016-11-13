@@ -28,11 +28,12 @@ sys:
   host: "0.0.0.0"
   port: 8080
 
-employerMenu:
-  - title: "Internships"
-    link: "/employer/viewInternship"
-  - title: "Post New Internship"
-    link: "/employer/postInternship"
+electionsMenu:
+  - title: "Home"
+    link: "/user/upcomingElections"
+  - title: "Personal Issue Views"
+    link: "/user/rateIssues"
+
     
 table_entry:
   - header: "Name"
