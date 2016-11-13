@@ -28,7 +28,7 @@ def init_db ():
 
 def add_dummy_users():
   T = model.User
-  new_user = model.User(first_name="Aleksandra",address1="101 Chestnut St.", city="Berea", state="KY", address2="", last_name="Long", time=1476377751.49,token="oasda",email="employer@gmail.com").save()
+  new_user = model.User( first_name="Aleksandra",address1="101 Chestnut St.", city="Berea", state="KY", address2="", last_name="Long", time=1476377751.49,token="oasda",email="employer@gmail.com").save()
   new_user = model.User(first_name="Cody",last_name="Myers",phone="8659347353",time=0,token="lsdjf",email="admin@gmail.com").save()    
 
 if __name__ == "__main__":

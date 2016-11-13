@@ -1,6 +1,7 @@
 import json
 from watson_developer_cloud import AlchemyLanguageV1 as alchem
 from google import search
+import time
 
 class SentimentAnalyzer:
     def __init__(self, key):
@@ -19,7 +20,10 @@ class SentimentAnalyzer:
             try:
                 res = self.alchem.targeted_sentiment(url=url,targets=keywords)
                 count +=1
-                sentiment += float(res['results'][0]['sentiment']['score'])
+                if res['results'][0]['sentiment']['type'] == "neutral":
+                    sentiment += 0
+                else:
+                    sentiment += float(res['results'][0]['sentiment']['score'])
             except Exception, e:
                 print "Exception is : {}".format(e)
         if count == 0:
@@ -27,7 +31,7 @@ class SentimentAnalyzer:
         return (sentiment/count)
 
     def get_urls(self, searchString):
-        return search(searchString, lang='es', stop=5)
+        return search(searchString, lang='es', stop=3)
 
 
 def main():
