@@ -13,11 +13,13 @@ class SentimentAnalyzer:
         for url in urls:
             try:
                 res = self.alchem.targeted_sentiment(url=url,targets=keywords)
-                print json.dumps(res, indent=2)
                 count +=1
-            except(e):
+            except Exception, e:
                 print e
             sentiment += float(res['results'][0]['sentiment']['score'])
+            print count
+        if count == 0:
+            return -1
         return (sentiment/count)
 
     def get_urls(self, searchString):
@@ -26,8 +28,8 @@ class SentimentAnalyzer:
 
 def main():
     watson = SentimentAnalyzer('b3ab2920d3b2a7215389dddeec54bf1ed0724ae1')
-    urls = watson.get_urls('bernie sanders free education')
-    keywords = ["tuition"]
+    urls = watson.get_urls('bernie sanders abortion')
+    keywords = ["abortion"]
     print watson.get_sentiment(keywords, urls)
 
 
