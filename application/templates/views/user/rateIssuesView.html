@@ -42,7 +42,47 @@
                    style=" width: 50%; !important;"
                    data-slider-ticks-labels='["Opposes", "Neutral/No oppinion", "Supports"]' 
                    data-provide="slider" 
-                   value="1"
+                   {% if issue == "Abortion"%}
+                    value={{issue.abortion}}
+                   {% elif issue == "Women and Minorities" %}
+                    value={{issue.womenAndMinorities}}
+                   {% elif issue == "Same-Sex Marriage" %}                   
+                   value={{issue.sameSexMarriage}}
+                   {% elif issue == "Crime" %}
+                   value={{issue.crime}}
+                   {% elif issue == "Guns" %}
+                   value={{issue.guns}}
+                   {% elif issue == "Drugs" %}
+                   value={{issue.drugs}}
+                   {% elif issue == "Public" %}
+                   value={{issue.publicFaith}}
+                   {% elif issue == "Environment" %}
+                   value={{issue.environment}}
+                   {% elif issue == "Campaign Finance" %}
+                   value={{issue.campaignFinance}}
+                   {% elif issue == "Foreign Affairs" %}
+                   value={{issue.foreignAffairs}}
+                   {% elif issue == "America" %}
+                    value={{issue.america}}
+                     {% elif issue == "Obamacare" %}
+                   value={{issue.obamacare}}
+                   {% elif issue == "Schools" %}
+                   value={{issue.schools}}
+                   {% elif issue == "Energy" %}
+                   value={{issue.energy}}
+                   {% elif issue == "Immigration" %}
+                   value={{issue.immigration}}
+                   {% elif issue == "Taxes" %}
+                   value={{issue.taxes}}
+                   {% elif issue == "Stimulus" %}
+                   value={{issue.stimulus}}
+                   {% elif issue == "Social Security" %}
+                   value={{issue.socialSecurity}}
+                   {% elif issue == "Trade" %}
+                   value={{issue.trade}}
+                   {% elif issue == "Military" %}
+                   value={{issue.military}}
+                    {% endif %}
                    data-slider-value="1"
                    type="number"/>
         </div>    
