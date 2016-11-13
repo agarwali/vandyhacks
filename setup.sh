@@ -71,3 +71,5 @@ pip install -U "configure==$CONFIGURE_VERSION"
 # http://configure.readthedocs.io/en/latest/#
 
 pip install -U "flask-mail==$MAIL_VERSION"
+
+pip install -U "watson_developer_cloud"

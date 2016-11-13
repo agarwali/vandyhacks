@@ -1,4 +1,4 @@
-#!/home/ubuntu/workspace/venv/bin/python
+#!/home/ishwar/repos/vandyhacks/venv/bin/python2
 
 import datetime
 import sys
