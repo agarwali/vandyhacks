@@ -1,5 +1,39 @@
 {% extends "base.html" %}
 {% block body %}
-
-
+<style type="text/css">
+    .progress{
+        border-radius: 0;
+    }
+    .progress-bar{
+        color: #37474f;
+    }
+</style>
+<div class="container">
+{% for issue in config['issuesList'] %}
+<p>{{issue.explanation}}</p>
+<div class="progress" style="margin-bottom:0">
+  <div class="progress-bar " role="progressbar" aria-valuenow="{{issue.score}}" aria-valuemin="0" aria-valuemax="100"
+    style="width:10%; background-color:#b0bec5">
+    Me
+  </div>
+</div>
+  {% for i in data %}
+  {% if i[issue['key']] == -100 %}
+  <div class="progress" style="margin-bottom:0">
+    <div class="progress-bar " role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+      style="width:100%; background-color:light-grey">
+      {{i.politician.name}}
+    </div>
+  </div>
+  {% else %}
+  <div class="progress" style="margin-bottom:0">
+    <div class="progress-bar " role="progressbar" aria-valuenow="{{i[issue['key']]}}" aria-valuemin="0" aria-valuemax="100"
+      style="width:{{i[issue['key']]}}%; background-color:{{loop.cycle('#ef9a9a', '#ce93d8', '#90caf9', '#a5d6a7', '#e6ee9c')}}">
+      {{i.politician.name}}
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+{% endfor %}    
+</div>
 {% endblock %}

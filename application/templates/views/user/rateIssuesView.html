@@ -12,15 +12,14 @@
 
         {% for issue in config['issuesList'] %}
 
-            <option value="{{issue['option']}}"
+            <option value="{{issue['explanation']}}"
             {% if x %}
-                {% if issue['option'] in issuesSTR %}
+                {% if issue['explanation'] in issuesSTR %}
                       selected
                 {% endif %}
             {% endif %}
             >
-                   <strong> {{issue['option']}}: </strong>
-                    <sub>{{issue['explanation']}}</sub>
+                   <strong> {{issue['explanation']}}: </strong>
             </option>
         {% endfor %}
     </select>
@@ -43,11 +42,11 @@
                    style=" width: 50%; !important;"
                    data-slider-ticks-labels='["Opposes", "Neutral/No oppinion", "Supports"]'
                    data-provide="slider"
-                   {% if iss == "Abortion"%}
+                   {% if "Abortion" in iss %}
                     data-slider-value="{{issue.abortion}}"
-                   {% elif iss == "Women and Minorities" %}
+                   {% elif "Women" in iss %}
                     data-slider-value="{{issue.womenAndMinorities}}"
-                   {% elif iss == "Same-Sex Marriage" %}
+                   {% elif "Marriage" in iss %}
                    data-slider-value="{{issue.sameSexMarriage}}"
                    {% elif "Guns" in iss %}
                    data-slider-value="{{issue.guns}}"

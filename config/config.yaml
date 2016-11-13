@@ -50,16 +50,16 @@ flask:
   secretKey: RANDOM
 
 issuesList:
-  - option: "Women and Minorities"
+  - option: "womenAndMinorities"
     explanation: "Legally Require Hiring Women and Minorities"
     key: "womenAndMinorities"
-  - option: "Same-Sex Marriage"
-    explanation: "homosexuality same-sex marriage"
+  - option: "sameSexMarriage"
+    explanation: "Homosexuality Same-Sex Marriage"
     key: "sameSexMarriage"
-  - option: "Guns"
+  - option: "guns"
     explanation: "Gun Rights"
     key: "guns"
-  - option: "Abortion"
+  - option: "abortion"
     explanation: "Abortion and Planned Parenthood"
     key: "abortion"
 

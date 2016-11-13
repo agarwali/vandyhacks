@@ -37,28 +37,31 @@ THECOOKIE = 'internshipcatalog'
 @app.route('/user/rateIssues', methods = ['GET','POST'])
 def rateIssues ():
   if request.method == "GET":
-    return render_template("views/user/rateIssuesView.html", config = config)
+    issue=Issues.get(Issues.user==1)
+    return render_template("views/user/rateIssuesView.html", config = config, issue = issue)
   elif request.method == "POST":
     data=request.form
     if data['button'] == "save":
       user=User.get(User.UID==1)
-      print user.first_name
+      issue=Issues.get(Issues.user==1)
       issuesList = request.form.getlist('issueChoices')
       x=1
       issues=', '.join(issuesList)
-      return render_template("views/user/rateIssuesView.html", config = config,x=x, il=issuesList, issuesSTR = issues)
+      print issues
+      return render_template("views/user/rateIssuesView.html", config = config,x=x, issue=issue, il=issuesList, issuesSTR = issues)
 
     elif data['button'] == "post":
-      issue=Issues.create()
+      user=User.get(User.UID==1)
+      issue=Issues.get(Issues.user==1)
       for key in data:
-        if key=="Women":
-          issue.womenAndMinorities=data[key]
-        elif key=="Same-Sex":
-          issue.abortion=data[key]
-        elif key=="Guns":
-          issue.guns=data[key]
+        if key=="Legally":
+          issue.womenAndMinorities=int((data[key]/2)*100)
+        elif key=="Homosexuality":
+          issue.sameSexMarriage=int((data[key]/2)*100)
+        elif key=="Gun":
+          issue.guns=int((data[key]/2)*100)
         elif key=="Abortion":
-          issue.abortion=data[key]
+          issue.abortion=int((data[key]/2)*100)
         issue.user=1
       issue.save()
 
