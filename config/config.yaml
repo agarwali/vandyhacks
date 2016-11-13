@@ -34,6 +34,10 @@ employerMenu:
   - title: "Post New Internship"
     link: "/employer/postInternship"
     
+table_entry:
+  - header: "Name"
+  - header: "Date"
+   
 flask:
   # Secret key for signing cookies
   # Only needed for admin module, and we don't seem to rely on

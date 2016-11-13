@@ -39,9 +39,56 @@ def rateIssues ():
   if request.method == "GET":
     return render_template("views/user/rateIssuesView.html", config = config)
   elif request.method == "POST":
-    issuesList = request.form.getlist('issueChoices')
     data=request.form
     if data['button'] == "save":
+      issuesList = request.form.getlist('issueChoices')
       x=1
       issues=', '.join(issuesList)
-      return render_template("views/user/rateIssuesView.html", config = config,x=x, il=issuesList, issues = issues)
+      return render_template("views/user/rateIssuesView.html", config = config,x=x, il=issuesList, issuesSTR = issues)
+     
+    elif data['button'] == "post":
+      issue=Issues.create()
+      for key in data:
+        if key=="Abortion":
+          issue.abortion=data[key] 
+        elif key=="Women":
+          issue.womenAndMinorities=data[key] 
+        elif key=="Same-Sex":
+          issue.abortion=data[key] 
+        elif key=="Crime":
+          issue.crime=data[key] 
+        elif key=="Guns":
+          issue.guns=data[key] 
+        elif key=="Public":
+          issue.publicFaith=data[key] 
+        elif key=="Environment":
+          issue.environment=data[key]
+        elif key=="Campaign":
+          issue.campaignFinance=data[key]
+        elif key=="Obamacare":
+          issue.obamacare=data[key]
+        elif key=="Schools":
+          issue.schools=data[key]
+        elif key=="Energy":
+          issue.energy=data[key]
+        elif key=="Drugs":
+          issue.socialSecurity=data[key]
+        elif key=="Immigration":
+          issue.immigration=data[key]
+        elif key=="Taxes":
+          issue.taxes=data[key]
+        elif key=="Stimulus":
+          issue.stimulus=data[key]
+        elif key=="Social":
+          issue.socialSecurity=data[key]
+        elif key=="Trade":
+          issue.trade=data[key]
+        elif key=="Military":
+          issue.military=data[key]
+        elif key=="America":
+          issue.america=data[key]
+        elif key=="Foreign":
+          issue.foreignPolicy=data[key]
+      issue.save()
+      
+      return redirect("user/upcomingElections") 
