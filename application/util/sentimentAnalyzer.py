@@ -7,23 +7,27 @@ class SentimentAnalyzer:
         self.key = key
         self.alchem = alchem(api_key = self.key)
 
-    def get_sentiment(self, keywords, urls):
+    def get_sentiment(self, keywords, name):
+        print keywords
         sentiment = 0
         count = 0
+        searchString = name
+        for key in keywords:
+            searchString +=  " {}".format(key)
+        urls = self.get_urls(searchString)
         for url in urls:
             try:
                 res = self.alchem.targeted_sentiment(url=url,targets=keywords)
                 count +=1
+                sentiment += float(res['results'][0]['sentiment']['score'])
             except Exception, e:
-                print e
-            sentiment += float(res['results'][0]['sentiment']['score'])
-            print count
+                print "Exception is : {}".format(e)
         if count == 0:
-            return -1
+            return -2
         return (sentiment/count)
 
     def get_urls(self, searchString):
-        return search(searchString, lang='es', stop=10)
+        return search(searchString, lang='es', stop=5)
 
 
 def main():

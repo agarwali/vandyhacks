@@ -24,7 +24,7 @@ from flask import \
   session, \
   url_for, \
   abort
- 
+
 from application.logic.validation import \
   tokenOk, \
   getUserFromEmail, \
@@ -41,28 +41,28 @@ def rateIssues ():
   elif request.method == "POST":
     data=request.form
     if data['button'] == "save":
-      user=User.get(User.UID==0)
+      user=User.get(User.UID==1)
       print user.first_name
       issuesList = request.form.getlist('issueChoices')
       x=1
       issues=', '.join(issuesList)
       return render_template("views/user/rateIssuesView.html", config = config,x=x, il=issuesList, issuesSTR = issues)
-     
+
     elif data['button'] == "post":
       issue=Issues.create()
       for key in data:
         if key=="Abortion":
-          issue.abortion=data[key] 
+          issue.abortion=data[key]
         elif key=="Women":
-          issue.womenAndMinorities=data[key] 
+          issue.womenAndMinorities=data[key]
         elif key=="Same-Sex":
-          issue.abortion=data[key] 
+          issue.abortion=data[key]
         elif key=="Crime":
-          issue.crime=data[key] 
+          issue.crime=data[key]
         elif key=="Guns":
-          issue.guns=data[key] 
+          issue.guns=data[key]
         elif key=="Public":
-          issue.publicFaith=data[key] 
+          issue.publicFaith=data[key]
         elif key=="Environment":
           issue.environment=data[key]
         elif key=="Campaign":
@@ -91,8 +91,8 @@ def rateIssues ():
           issue.america=data[key]
         elif key=="Foreign":
           issue.foreignPolicy=data[key]
-          
-      issue.user=0;
+
+      issue.user=1;
       issue.save()
-      
-      return redirect("user/upcomingElections") 
+
+      return redirect("user/upcomingElections")

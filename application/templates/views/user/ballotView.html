@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="container">
+  {{contest.type}}{{contest.office}}
+  <ul class="collection">
+  {% for issue in config['issuesList'] %}
+      {{issue.option}}
+      {% if contest.candidates is not none %}
+      {% for candidate in contest.candidates %}
+      <span id="ex18-label-{{loop.index}}" class="hidden">Example low value</span>
+      {% endfor %}
+      {% endif %}
+      <input id="ex18{{loop.index}}" type="text"/>
+  {% endfor %}
+  </ul>
+</div>
+<script type="text/javascript">
+{% for issue in config['issuesList'] %}
+    $("#ex18{{loop.index}}").slider({min  : 0, max  : 10, value: [
+      {% if contest.candidates is not none %}
+      {% for candidate in contest.candidates %}
+        'ex18-label-{{loop.index}}',
+      {% endfor %}
+      {% endif %}
+    ], labelledby: [
+    {% if contest.candidates is not none %}
+    {% for candidate in contest.candidates %}
+      'ex18-label-{{loop.index}}',
+    {% endfor %}
+    {% endif %}
+    ]});
+{% endfor %}
+</script>
+{% endblock %}
