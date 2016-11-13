@@ -6,8 +6,7 @@ class Issues (Model):
   womenAndMinorities  = IntegerField(default=1)
   sameSexMarriage     = IntegerField(default=1)
   guns                = IntegerField(default=1)
-  obamacare           = IntegerField(default=1)
-  immigration         = IntegerField(default=1)
+  abortion            = IntegerField(default=1)
   
   # Integer field means it can only be pro or against
   # Float field means it can be anywhere between pro, against or neutral

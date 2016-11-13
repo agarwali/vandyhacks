@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block body %}
+{% include "snips/topNav.html" %}
 <div class="container">
     <h1 class="text-center"><strong> Welcome to our app</strong></h1>
     <div> {% include "navBar.html" %}<br><br> </div>
@@ -10,7 +11,7 @@
         <label> First Name: </label>
         <input class = "form-control" type='text' name="first_name"></div>
         <div class="col-lg-2">
-        <label> Middle Initial: </label> <input 
+        <label> Middle Initial: </label> <input
                    oninput='this.value=this.value.toUpperCase();'
                    maxlength="1"
                    size="1" class = "char form-control" type='text' name="middle_initial"></div>
@@ -22,15 +23,15 @@
         <sub><i> (In order to get the correct ballot, we need to know your address)</i></sub></h4>
         <div class="col-lg-6">
             <label>  Address 1: </label>
-            <input type  = "text" 
-                   class = "form-control" 
+            <input type  = "text"
+                   class = "form-control"
                    name = "address1"
                    required />
           </div>
           <div class="col-lg-6">
               <label>  Address 2: </label>
-              <input type  = "text" 
-                     class = "form-control " 
+              <input type  = "text"
+                     class = "form-control "
                      name = "address2"
                      required />
           </div>
@@ -39,12 +40,12 @@
                 <br/>
                 <label> City: </label>
                 <input type  = "text"
-                       class = "form-control" 
+                       class = "form-control"
                        name = "city"
                        required
                         />
             </div>
-            
+
             <div class="col-lg-2 " >
                 <br/>
                 <label> State: </label>
@@ -53,8 +54,8 @@
             <div class="col-lg-2">
                 <br/>
                 <label> Zip Code: </label>
-                <input type  = "text" 
-                       class = "form-control" 
+                <input type  = "text"
+                       class = "form-control"
                        name = "zip_code"
                        required
                         />

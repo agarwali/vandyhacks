@@ -1,33 +1,5 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="container">
-  {% for issue in contest %}
-  <div class="row">
-    {{issue.option}}
-    {% if issue.candidates is not none %}
-    {% for candidate in issue.candidates %}
-    <span id="ex18-label-{{loop.index}}" class="hidden">{{candidate.name}}</span>
-    {% endfor %}
-    {% endif %}
-    <input id="ex18{{loop.index}}" data-slider-enabled="false" type="text"/>
-  </div>
-  {% endfor %}
-</div>
-<script type="text/javascript">
-{% for issue in contest %}
-    $("#ex18{{loop.index}}").slider({precision: 2, min  : 0, max  : 2, value: [
-      {% if issue.candidates is not none %}
-      {% for candidate in issue.candidates %}
-        {{candidate.score}},
-      {% endfor %}
-      {% endif %}
-    ], labelledby: [
-    {% if issue.candidates is not none %}
-    {% for candidate in issue.candidates %}
-      'ex18-label-{{loop.index}}',
-    {% endfor %}
-    {% endif %}
-    ]});
-{% endfor %}
-</script>
+
+
 {% endblock %}

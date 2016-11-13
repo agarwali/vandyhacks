@@ -57,10 +57,8 @@ def rateIssues ():
           issue.abortion=data[key]
         elif key=="Guns":
           issue.guns=data[key]
-        elif key=="Obamacare":
-          issue.obamacare=data[key]
-        elif key=="Immigration":
-          issue.immigration=data[key]
+        elif key=="Abortion":
+          issue.abortion=data[key]
         issue.user=1
       issue.save()
 

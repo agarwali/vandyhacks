@@ -1,23 +1,23 @@
 {% extends "base.html" %}
 {% block body %}
+{% include "snips/topNav.html" %}
 <div class="container">
     <h1 class="text-center"><strong> Welcome to our app</strong></h1>
     <div> {% include "navBar.html" %}<br><br> </div>
-    <form method="POST"> 
+    <form method="POST">
     {% if x != 1 %}
     <h3 class="text-center"> Please choose all issues that are of importance to you:</h3>
     <br>
     <select class="selectpicker form-control" title="-- Select all that is important to you --" multiple name="issueChoices">
-     
+
         {% for issue in config['issuesList'] %}
-            
+
             <option value="{{issue['option']}}"
             {% if x %}
                 {% if issue['option'] in issuesSTR %}
                       selected
                 {% endif %}
             {% endif %}
-            
             >
                    <strong> {{issue['option']}}: </strong>
                     <sub>{{issue['explanation']}}</sub>
@@ -36,17 +36,17 @@
         {% for issue in il %}
         <div>
             <label class="col-lg-4"> {{issue}}: </label>
-            <input class="col-lg-8" 
+            <input class="col-lg-8"
                    name={{issue}}
-                   data-slider-ticks="[0, 1, 2]" 
+                   data-slider-ticks="[0, 1, 2]"
                    style=" width: 50%; !important;"
-                   data-slider-ticks-labels='["Opposes", "Neutral/No oppinion", "Supports"]' 
-                   data-provide="slider" 
+                   data-slider-ticks-labels='["Opposes", "Neutral/No oppinion", "Supports"]'
+                   data-provide="slider"
                    {% if issue == "Abortion"%}
                     value={{issue.abortion}}
                    {% elif issue == "Women and Minorities" %}
                     value={{issue.womenAndMinorities}}
-                   {% elif issue == "Same-Sex Marriage" %}                   
+                   {% elif issue == "Same-Sex Marriage" %}
                    value={{issue.sameSexMarriage}}
                    {% elif issue == "Crime" %}
                    value={{issue.crime}}
@@ -85,7 +85,7 @@
                     {% endif %}
                    data-slider-value="1"
                    type="number"/>
-        </div>    
+        </div>
             <br>
         {% endfor %}
     {% endif %}
@@ -98,5 +98,5 @@
     {% endif %}
     </div>
     </form>
-</div> 
+</div>
 {% endblock %}
