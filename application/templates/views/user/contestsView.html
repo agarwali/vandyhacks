@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 {% block body %}
-<div class="">
-  Hello
+
+<div class="container">
+  <ul class="collection">
+  {% for contest in elections %}
+    <li class="collection-item dismissable"><div>{{contest.office}}<a href="contests/{{eid}}/{{loop.index}}" class="secondary-content"><i class="material-icons"><i class="material-icons">keyboard_arrow_right</i></i></a></div></li>
+  {% endfor %}
+  </ul>
 </div>
-{{elections}}
 {% endblock %}
