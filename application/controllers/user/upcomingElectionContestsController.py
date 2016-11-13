@@ -22,8 +22,7 @@ from application.models.issuesModel import Issues
 @app.route('/contests/<election_id>/<int:index>', methods = ['GET'])
 def ballot (election_id, index):
     user = User.select().where(User.UID==1).get()
-    issue = Issues.get(Issues.user==1)
-    # issue_dict = model_to_dict(issue)
+    userIssue = Issues.get(Issues.user==1)
     address = "{0} {1} {2} {3}".format(user.address1, user.address2, user.city, user.state)
     electionInfo = ElectionInfo(config['keys']['googleapi'])
     sentimentAnalyzer = SentimentAnalyzer(config['keys']['ibmapi'])
@@ -38,7 +37,7 @@ def ballot (election_id, index):
         is_pol=Politician.select().where(Politician.name == name)
         # print is_pol
         if is_pol.exists():
-           
+
            is_pol=is_pol.get()
            print "exists: ", is_pol.name
            issues=Issues.get(Issues.politician==is_pol.PID)
@@ -55,10 +54,8 @@ def ballot (election_id, index):
                 score = int(((s+1)/2) *100)
                 print score
                 setattr(issue, iss['option'],score)
-    
+
            issue.save()
            politicianIssues.append(issue)
            #cand['score'] = int(random()*100)
-    return render_template("views/user/ballotView.html", config = config, data=politicianIssues)
-    
-    
+    return render_template("views/user/ballotView.html", config = config, data=politicianIssues, userIssue=userIssue)
