@@ -10,16 +10,19 @@ application:
   default: index
   tokenTimeout: 10
   url: "dmz-intern-cody-myers.c9users.io:8080"
-  
+
+keys:
+  googleapi: "AIzaSyBcM1yBZ6R7Bva6xnluLFL6L_bzhHiU_Sw"
+  ibmapi: "b3ab2920d3b2a7215389dddeec54bf1ed0724ae1"
 
 databases:
   dmz:
     filename: data/dmz.sqlite
-  
+
 organizationType:
   - option: "Profit"
   - option: "Non-profit"
-    
+
 paidType:
   - option: "Hourly"
   - option: "Compensation"
@@ -34,17 +37,17 @@ electionsMenu:
   - title: "Personal Issue Views"
     link: "/user/rateIssues"
 
-    
+
 table_entry:
   - header: "Name"
   - header: "Date"
-   
+
 flask:
   # Secret key for signing cookies
   # Only needed for admin module, and we don't seem to rely on
   # it. Hence, we will randomly generate a key.
   secretKey: RANDOM
-  
+
 issuesList:
   - option: "Abortion"
     explanation: "Abortion rights"
@@ -86,6 +89,6 @@ issuesList:
     explanation: "Supporting American Exceptionalism"
   - option: "Foreign Policy"
     explanation: "Avoiding Foreign Entanglements"
-   
+
 signature: "Thank you for using the Internship Catalog System"
 controllers: !include:controllers.yaml

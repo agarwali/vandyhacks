@@ -6,7 +6,7 @@ class SentimentAnalyzer:
     def __init__(self, key):
         self.key = key
         self.alchem = alchem(api_key = self.key)
-    
+
     def get_sentiment(self, keywords, urls):
         sentiment = 0
         count = 0
@@ -24,7 +24,7 @@ class SentimentAnalyzer:
 
     def get_urls(self, searchString):
         return search(searchString, lang='es', stop=10)
-        
+
 
 def main():
     watson = SentimentAnalyzer('b3ab2920d3b2a7215389dddeec54bf1ed0724ae1')

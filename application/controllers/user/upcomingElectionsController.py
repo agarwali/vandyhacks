@@ -6,6 +6,7 @@ from application.models import model
 from application.models.userModel import User
 from application.models.issuesModel import Issues
 from urlparse import urlparse
+from application.util.electionInfo import ElectionInfo
 
 import datetime
 import os
@@ -24,7 +25,7 @@ from flask import \
   session, \
   url_for, \
   abort
- 
+
 from application.logic.validation import \
   tokenOk, \
   getUserFromEmail, \
@@ -37,8 +38,8 @@ THECOOKIE = 'internshipcatalog'
 @app.route('/user/upcomingElections/', methods = ['GET'])
 def upcomingElections ():
   if request.method == "GET":
-    
-    #TODO: needs to pass elections objects  ----------------
-    elections=[{"EID":"1","name":"First", "date":"12/12/12"},{"EID":"2","name":"Second", "date":"13/13/13"},{"EID":"3","name":"Third", "date":"14/14/14"}]
+
+    elect = ElectionInfo(config['keys']['googleapi'])
+    elections = elect.get_elections()
+    #elections=[{"EID":"1","name":"First", "date":"12/12/12"},{"EID":"2","name":"Second", "date":"13/13/13"},{"EID":"3","name":"Third", "date":"14/14/14"}]
     return render_template("views/user/upcomingElectionsView.html", config = config, elections=elections)
-  
