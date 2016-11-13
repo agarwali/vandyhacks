@@ -4,7 +4,7 @@
 from application.models import classes
 from application.config import *
 from application.models import model
-    
+from application.models.userModel import User    
 def init_db ():
   # First, we create the databases.
   for database in config.databases:
@@ -29,7 +29,7 @@ def init_db ():
 def add_dummy_users():
   T = model.User
   new_user = model.User(first_name="Aleksandra",last_name="Long",phone="9568565255",time=1476377751.49,token="oasda",email="employer@gmail.com").save()
-  new_user = model.User(first_name="Cody",last_name="Myers",phone="8659347353",time=0,token="lsdjf",email="admin@gmail.com",isAdmin=1).save()    
+  new_user = model.User(first_name="Cody",last_name="Myers",phone="8659347353",time=0,token="lsdjf",email="admin@gmail.com").save()    
 
 if __name__ == "__main__":
   init_db()

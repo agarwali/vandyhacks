@@ -64,7 +64,7 @@ def handleTokenRequest ():
   '''TODO: Remove the line of code below before going to production'''
   check = checkIfDevUser(emailAddr)
   if check == True:
-    return redirect(url_for('viewInternship'))
+    return redirect(url_for('upcomingElections'))
   elif check == "Fail":
     flash("Could Not Access Dev account.")
     return redirect(url_for("getEmail"))
@@ -81,8 +81,6 @@ def handleTokenRequest ():
     query = T.update(token = newToken, time = now).where(T.email == emailAddr)
     query.execute()
     user = getUserFromToken(newToken)
-    isAdmin = user.isAdmin
-    #print isAdmin
   # Create the URL's
   o = urlparse(request.url)
   target = "http://"
@@ -101,14 +99,8 @@ def handleTokenRequest ():
         recipients = [emailAddr]
       )
       msg.body = ""
-      if isAdmin:
-        msg.html = render_template("views/email/admin.html",
-          config = config,
-          urls   = urls,
-          signature = config.signature
-        )
-      else:
-        msg.html = render_template("views/email/employer.html",
+      
+      msg.html = render_template("views/email/employer.html",
           config = config,
           urls   = urls,
           signature = config.signature
@@ -119,7 +111,6 @@ def handleTokenRequest ():
       # Set Flags and render template
       flags = {}
       flags["local"] = os.getenv("InternshipCatalog")
-      flags["admin"] = isAdmin
       resp = make_response(
       render_template("views/login/handleTokenRequestView.html",
         config = config,
@@ -133,27 +124,12 @@ def handleTokenRequest ():
     print e
     flash ("It looks like you might need to try again.")
     return redirect(url_for("getEmail"))
-
-@app.route('/a/<string:tok>', methods = ['GET'])
-def admin_login (tok):
-  if tokenOK(tok):
-    user = getUserFromToken(tok)
-    if user.isAdmin:
-      setSessionVariables(tok)
-      return redirect("/admin")
-    else:
-      flash ("You are not an admin.")
-      return redirect(url_for("email"))
-  else:
-    flash ("You are not an admin.")
-    return redirect(url_for("email"))
-
 # PURPOSE: Log in with a valid token.
 @app.route('/s/<string:tok>', methods = ['GET'])
 def login(tok):
   if tokenOk(tok):
     setSessionVariables(tok)
     #print 'email before going into session: {0}'.format(email)
-    return redirect(url_for('viewInternship'))
+    return redirect(url_for('upcomingElections'))
   else:
     abort(403)

@@ -9,7 +9,7 @@ application:
   title: "Internship Catalog"
   default: index
   tokenTimeout: 10
-  url: "dmz-intern-cody-myers.c9users.io:8080"
+  url: "vandyhacks-cvetanovskaa.c9users.io:8080/"
   
 
 databases:

@@ -41,10 +41,8 @@ def tokenOk(tok):
     now  = time.time()
     isTokenValid = False
     timeLeft     = (now - float(user.time))
-    if user.isAdmin == True:
-      isTokenVaild = timeLeft < (config.application.tokenTimeout * 60 * 5)
-    else:
-      isTokenVaild = timeLeft < (config.application.tokenTimeout * 60)
+   
+    isTokenVaild = timeLeft < (config.application.tokenTimeout * 60)
     if isTokenVaild:
       print "We have {0} left.".format(timeLeft)
       return True
