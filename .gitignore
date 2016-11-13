@@ -3,6 +3,5 @@ flask_session
 .tmp
 venv
 *.pyc
-data
 
 application/controllers/login/.~*
