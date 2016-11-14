@@ -5,15 +5,20 @@
 
 {% include "snips/flash.html" %}
 {% set active_page = "getemail" %}
+<style media="screen">
+  img {
+    max-height: 100px;
+  }
+</style>
 <div class="container">
-  
+
 <br/>
-    
-    <div style="background:#6CB1FF;
+
+    <div style="background:#60718d;
                 border-radius: 88px 20px 124px 20px;
                 -moz-border-radius: 88px 20px 124px 20px;
                 -webkit-border-radius: 88px 20px 124px 20px;
-                border: 5px outset #aeb9e8;
+                border: 5px outset #60718d;
                 -webkit-box-shadow: 4px 10px 13px -1px ;
                 -moz-box-shadow: 4px 10px 13px -1px ;
                 box-shadow: 4px 10px 13px -1px ;"
@@ -24,7 +29,7 @@
     			    col-md-1
     			    col-sm-1
     			    col-xs-1"></div>
-    
+
         <!-- This is the div for the Title of the login object-->
         <div style="background: #FFFFFF;
                     border-radius: 88px 20px 120px 20px"
@@ -33,9 +38,9 @@
                     col-md-5;
                     col-sm-10
                     col-xs-10">
+            <img src="static/wisElect.png" alt="" />
             <div class = "col-lg-12 col-md-12">
     <form action = "/gt" method = "POST">
-      <h3 class="text-center">Short-Form Email Address</h3>
       <h4 class="text-center">Already have an account? </h4>
       <div class="col-lg-8">
         <div class="form-group">
@@ -57,7 +62,7 @@
     <div class="col-lg-12">
       <br>
     <h4 class="text-center"> Don't have an account? </h4>
-    
+
     <div class="col-lg-12">
     <a type="submit" href="/employer/userRegister/"class="btn btn-md btn-success"> Create A New Account</a></div>
                 <br><br><br>
@@ -69,11 +74,11 @@
     </div>
   </div>
 </div>
- 
- 
- 
- 
- 
- 
+
+
+
+
+
+
 
 {% endblock %}

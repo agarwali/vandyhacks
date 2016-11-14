@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
 <div class="container">
+  <h3>Contests</h3>
   <ul class="collection">
   {% for contest in elections %}
     <li class="collection-item dismissable"><div>{{contest.office}}<a href="/contests/{{eid}}/{{loop.index}}" class="secondary-content"><i class="material-icons"><i class="material-icons">keyboard_arrow_right</i></i></a></div></li>

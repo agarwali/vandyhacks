@@ -43,6 +43,8 @@ def ballot (election_id, index):
            issues=Issues.get(Issues.politician==is_pol.PID)
            politicianIssues.append(issues)
         else:
+           if 'candidateUrl' not in candidate:
+               candidate['candidateUrl'] = ""
            pol=Politician.create(name=candidate['name'], party=candidate['party'], url=candidate['candidateUrl'])
            pol.save()
            issue=Issues.create()

@@ -2,7 +2,6 @@
 {% block body %}
 {% include "snips/topNav.html" %}
 <div class="container">
-    <h1 class="text-center"><strong> Welcome to our app</strong></h1>
     <div> {% include "navBar.html" %}<br><br> </div>
     <form method="POST">
     {% if x != 1 %}
@@ -38,9 +37,9 @@
             <input class="col-lg-8"
                    name="{{iss}}"
                    type="number"
-                   data-slider-ticks="[0, 1, 2]"
+                   data-slider-min = "0"
+                   data-slider-max = "100"
                    style=" width: 50%; !important;"
-                   data-slider-ticks-labels='["Opposes", "Neutral/No oppinion", "Supports"]'
                    data-provide="slider"
                    {% if "Abortion" in iss %}
                     data-slider-value="{{issue.abortion}}"
@@ -48,7 +47,7 @@
                     data-slider-value="{{issue.womenAndMinorities}}"
                    {% elif "Marriage" in iss %}
                    data-slider-value="{{issue.sameSexMarriage}}"
-                   {% elif "Guns" in iss %}
+                   {% elif "Gun" in iss %}
                    data-slider-value="{{issue.guns}}"
                    {% else %}
                    data-slider-value="1"
